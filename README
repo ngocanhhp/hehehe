@@ -1,0 +1,97 @@
+/**********************************************************
+* Project 4: gerp
+* CS 15
+* README
+* Author: Toki Eashir & Anh Hoang
+****************
+*****************************************/
+
+
+Program purpose:
+----------------
+
+    Indexes and Searches through all the files in a given directory and finds 
+    the given string(word). The program will behave similarly to the unix grep 
+    program, which can search through all the files in a directory and look for 
+    a sequence of characters. The results are stored in an output file.
+
+Acknowledgements:
+-----------------
+    - TAs saved our lives <3
+    - the deadline extension woooo
+    - cplusplus.com for looking up library functions.
+    - Class notes and Piazza
+    - hodge food. so good.
+
+Files:
+------
+
+unit_tests.h: Contains functions tests from Phase 1 and Hashmap.cpp tests
+              from Phase 2.
+
+stringProcessing.h: Contains the function declarations for the stripNonAlphaNum
+                    function.
+
+stringProcessing.cpp: Contains the function definitions for the stripNonAlphaNum
+                      function, which removes all leading and trailing 
+                      non-alphanumeric characters from the given string.
+
+main.cpp: Makes a gerp object and calls run() to start the program.
+
+gerp.h: Declares the Gerp Class and holds function declarations for gerp.cpp.
+
+gerp.cpp: Defines the run() function which contains the query loop.
+
+hashmap.cpp: Holds the function definitions of hashmap.h. This file contains the
+             implementation of HashMap class, Files, Entry, Value, Location 
+             strucsts, functions and helpers that deal with query commands from 
+             gerp.cpp.
+
+hashmap.h: Holds the function declarations of hashmap.h.
+
+Compile/run:
+------------
+    - Compile using:
+        make 
+    - Run executable with:
+        ./gerp [inputDirectory] [outputFile]
+
+Architectural overview:
+-----------------------
+    In this week's architectural digest, the program architecture primarily
+    relies on the Vector class from the C++ library. All structs are declared
+    and used in hashmap.h.
+
+    The struct Files stores the filepath of and all the lines in the file
+    stored in a vector of strings. 
+
+    Each word is stored as an entry and contains a vector of Location
+    structs which stores the indexes of filepath and line-number for fast
+    access.
+
+    The lowercase version of each word is stored in the Value, whereas the Value
+    struct contains a vector of Entry to store each variation of a given string.
+    
+    The chaining method is used to handle collisions, so the Hashmap 
+    is a vector that holds a vector of Values.
+
+Data structures:
+----------------
+
+    A Hashmap is a data structure that maps keys to values.
+    The functional library is used to generate hash values and the returned
+    number is modded by the current capacity to get the Index.
+
+
+Testing:
+--------
+
+    All Phase 1 Tests were done in unit_tests.h. More detailed information
+    is available in the function contracts for each test.
+    We made a copy of the tinyData directory onto our computer and added 
+    files and folders specified to our testing needs inside it to run our 
+    program on that directory and test for cases.
+
+Time spent on assignment:
+-------------------------
+ ~Way too many: 25++++++
